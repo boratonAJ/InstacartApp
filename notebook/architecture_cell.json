@@ -1,0 +1,30 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "language": "markdown"
+      },
+      "source": [
+        "## Architecture - Instacart Modeling Pipeline",
+        "",
+        "Below diagram summarizes the high-level architecture used by the notebooks: data ingestion, preprocessing, feature engineering, models and serving. The PNG is embedded below (update path if you moved files)."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "language": "python"
+      },
+      "source": [
+        "from IPython.display import Image, display\n",
+        "import os\n",
+        "img_path = '../InstacartApp/architecture/instacart_arch.png'\n",
+        "if os.path.exists(img_path):\n",
+        "    display(Image(filename=img_path, width=800))\n",
+        "else:\n",
+        "    print(f'Image not found: {img_path}. Update the path to the architecture PNG.')\n"
+      ]
+    }
+  ]
+}

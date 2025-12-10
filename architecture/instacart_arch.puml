@@ -1,0 +1,53 @@
+@startuml
+title Instacart Modeling Architecture - High Level
+
+actor User as U
+
+rectangle "Data Layer" {
+  [orders.csv]
+  [products.csv]
+  [order_products__prior.csv]
+  [aisles.csv]
+  [departments.csv]
+}
+
+rectangle "Ingestion / Storage" {
+  [Parquet / Local FS]
+  [Optional: Postgres / SQLite]
+}
+
+rectangle "Preprocessing & Feature Engineering" {
+  [Join & Clean]
+  [Derived Features]
+  [Sequence Embeddings]
+}
+
+rectangle "Modeling" {
+  [LightGBM / XGBoost]
+  [Neural Nets]
+  [Sequence Models (RNN/SGNS)]
+  [Blending / Stacking]
+}
+
+rectangle "Evaluation & Serving" {
+  [Validation & CV]
+  [Metrics (F1/AUC)]
+  [Flask App / Batch Scoring]
+}
+
+U --> [orders.csv]
+[orders.csv] --> [Parquet / Local FS]
+[products.csv] --> [Parquet / Local FS]
+[order_products__prior.csv] --> [Parquet / Local FS]
+[Parquet / Local FS] --> [Join & Clean]
+[Join & Clean] --> [Derived Features]
+[Derived Features] --> [LightGBM / XGBoost]
+[Derived Features] --> [Neural Nets]
+[Sequence Embeddings] --> [Neural Nets]
+[Sequence Embeddings] --> [Sequence Models (RNN/SGNS)]
+[LightGBM / XGBoost] --> [Blending / Stacking]
+[Neural Nets] --> [Blending / Stacking]
+[Blending / Stacking] --> [Validation & CV]
+[Blending / Stacking] --> [Flask App / Batch Scoring]
+
+@enduml
