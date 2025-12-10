@@ -1,0 +1,31 @@
+{# Shared sidebar include. Set `embed` (True/False) in the including template to decide behaviour. #}
+{# When embed=True the sidebar renders buttons that drive the AJAX viewer (use in `index.html`). #}
+{# When embed=False the sidebar renders anchor links for full-page navigation (use in q1..q5 and general dashboard). #}
+{% set p = request.path if request else '/' %}
+<aside class="sidebar col-12 col-md-3 col-lg-2 bg-white border-end py-4 px-3">
+  <h4 class="mb-3">Instacart Dashboard</h4>
+  <p class="small text-muted">Overview and quick links to visualizations and raw API endpoints.</p>
+  <div class="d-grid gap-2 mb-3">
+    {% if embed %}
+      <button class="btn btn-outline-secondary text-start viz-btn" data-src="/" data-bs-toggle="tooltip" data-bs-title="Overview">Overview</button>
+      <button class="btn btn-outline-primary text-start viz-btn" data-src="/api/q1" data-bs-toggle="tooltip" data-bs-title="Q1">Q1 — Top reorder products</button>
+      <button class="btn btn-outline-primary text-start viz-btn" data-src="/api/q2" data-bs-toggle="tooltip" data-bs-title="Q2">Q2 — Orders by hour × day</button>
+      <button class="btn btn-outline-primary text-start viz-btn" data-src="/api/q3" data-bs-toggle="tooltip" data-bs-title="Q3">Q3 — Co-purchased pairs</button>
+      <button class="btn btn-outline-primary text-start viz-btn" data-src="/api/q4" data-bs-toggle="tooltip" data-bs-title="Q4">Q4 — Reorder by segment</button>
+      <button class="btn btn-outline-primary text-start viz-btn" data-src="/api/q5" data-bs-toggle="tooltip" data-bs-title="Q5">Q5 — Inter-order timing</button>
+    {% else %}
+      <a href="/" class="btn btn-outline-secondary text-start {% if p == '/' %}active{% endif %}">Overview</a>
+      <a href="/q1" class="btn btn-outline-primary text-start {% if p.startswith('/q1') %}active{% endif %}">Q1 — Top reorder products</a>
+      <a href="/q2" class="btn btn-outline-primary text-start {% if p.startswith('/q2') %}active{% endif %}">Q2 — Orders by hour × day</a>
+      <a href="/q3" class="btn btn-outline-primary text-start {% if p.startswith('/q3') %}active{% endif %}">Q3 — Co-purchased pairs</a>
+      <a href="/q4" class="btn btn-outline-primary text-start {% if p.startswith('/q4') %}active{% endif %}">Q4 — Reorder by segment</a>
+      <a href="/q5" class="btn btn-outline-primary text-start {% if p.startswith('/q5') %}active{% endif %}">Q5 — Inter-order timing</a>
+    {% endif %}
+    <a href="/api/q1" class="btn btn-sm btn-outline-dark text-start">API: /api/q1</a>
+    <a href="/api/q2" class="btn btn-sm btn-outline-dark text-start">API: /api/q2</a>
+    <a href="/api/q3" class="btn btn-sm btn-outline-dark text-start">API: /api/q3</a>
+    <a href="/api/q4" class="btn btn-sm btn-outline-dark text-start">API: /api/q4</a>
+    <a href="/api/q5" class="btn btn-sm btn-outline-dark text-start">API: /api/q5</a>
+  </div>
+  <div class="small text-muted">Tip: use the API links for JSON payloads used by the interactive viewer.</div>
+</aside>

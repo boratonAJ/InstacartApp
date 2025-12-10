@@ -1,0 +1,30 @@
+<style>
+  /* Sidebar active override to make selected link clearly visible */
+  .sidebar .btn.active,
+  .sidebar .btn:active,
+  .sidebar .btn.active:focus {
+    background-color: #0d6efd !important;
+    color: #fff !important;
+    border-color: #0d6efd !important;
+  }
+
+  .sidebar .btn.active:hover {
+    background-color: #0b5ed7 !important;
+    color: #fff !important;
+  }
+
+  /* Data table: use Bootstrap table styles and align numeric columns to the right */
+  .data-table th, .data-table td { vertical-align: middle; }
+  .data-table td.num, .data-table th.num { text-align: right; white-space: nowrap; }
+  .data-table td.text, .data-table th.text { text-align: left; }
+
+  /* Main viewer centering helper (adjustable width) */
+  /* Changed to 1000px for a slightly narrower centered view */
+    #mainPane > .p-3 { max-width: var(--viewer-max-width); margin: 0 auto; width: 100%; }
+  :root { --viewer-max-width: 1000px; }
+
+  /* Small responsiveness tweaks */
+  @media (max-width: 768px) {
+    .sidebar { padding-bottom: 1rem; }
+  }
+</style>
