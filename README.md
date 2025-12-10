@@ -1,5 +1,11 @@
 # Instacart Basket Analysis (InstacartApp)
 
+<p align="center">
+  <a href="https://github.com/boratonAJ/InstacartApp">
+    <img src="instacart_repo_qr_small.png" alt="InstacartApp GitHub repository" width="200" />
+  </a>
+</p>
+
 This repository contains code, notebooks and a small Flask app used for exploring and modeling the Instacart online grocery orders dataset. The goal of the project is to analyze purchase behaviour and build features/models that predict whether a product will be reordered by a user.
 
 ---
