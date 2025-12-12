@@ -1,0 +1,39 @@
+# Core analysis packages
+pandas>=1.4
+numpy>=1.21
+matplotlib>=3.4
+seaborn>=0.11
+scipy>=1.7
+statsmodels>=0.13
+scikit-learn>=1.0
+
+# Fast local SQL + data tooling
+duckdb>=0.6
+
+# Notebook / interactive
+IPython>=7.0
+jupyterlab>=3.0
+
+# Kaggle helper (used in notebooks)
+kagglehub>=0.1
+
+# Database connectors (optional)
+psycopg2-binary>=2.9
+sqlalchemy>=1.4
+
+# Modeling & explainability (optional but recommended)
+lightgbm>=3.3
+xgboost>=1.6
+shap>=0.41
+
+# Deep learning (optional)
+tensorflow>=2.11
+# or: torch, torchvision if preferred
+
+# Utilities used during workflow
+qrcode[pil]>=7.3
+Pillow>=9.0
+
+# Optional: install if using plotting / dashboards
+plotly>=5.0
+ipywidgets>=8.0
