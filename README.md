@@ -121,9 +121,12 @@ The Flask app provides a small web interface and APIs used to visualize results 
 
 ## Architecture diagram
 
-The following is a high-level architecture diagram illustrating the data flow from raw CSVs through preprocessing, feature engineering, modeling, and serving.
+The following is a high-level architecture diagram illustrating the data flow from raw data from Kaggle Cloud via its API through preprocessing, feature engineering, modeling, and serving.
 
-![Architecture diagram](architecture/instacart_arch.png)
+![Overall Architecture diagram](notebook/images/final_draw.drawio_3.png)
+
+
+![Star Schema diagram](notebook/images/instacart_star_schema.png)
 
 ### Mermaid diagram (for README or docs)
 
