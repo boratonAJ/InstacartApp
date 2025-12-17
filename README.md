@@ -119,25 +119,15 @@ The Flask app provides a small web interface and APIs used to visualize results 
 
 - When working with the full dataset expect substantial memory usage — use sampling or chunked processing for development.
 
-## Architecture diagram
+## Star Schema, and ETL diagram
 
 The following is a high-level architecture diagram illustrating the data flow from raw data from Kaggle Cloud via its API through preprocessing, feature engineering, modeling, and serving.
 
-![Overall Architecture diagram](notebook/images/final_draw.drawio_3.png)
-
-
 ![Star Schema diagram](notebook/images/instacart_star_schema.png)
 
-### Mermaid diagram (for README or docs)
+### ETL diagram
 
-```mermaid
-flowchart LR
-  A[Raw CSVs\n(orders, products, order_products__prior)] --> B[Ingestion / Storage\n(Parquet / DB)]
-  B --> C[Preprocessing & Feature Engineering]\n+  C --> D[Modeling\n(LightGBM, NN, Sequence Models)]
-  D --> E[Blending / Evaluation]
-  E --> F[Serving / Flask App / Batch Scoring]
-  C --> G[Sequence Embeddings]\n+  G --> D
-```
+![Overall Architecture diagram](notebook/images/final_draw.drawio_3.png)
 
 Short explanation: raw CSV files are ingested and optionally converted to Parquet or loaded into a lightweight DB. Preprocessing joins and cleans the data, produces derived features and sequence embeddings. Models are trained (trees and neural nets) and blended; results are evaluated and exposed via a lightweight Flask demo or batch scoring pipeline.
 - `order_products__prior.csv` is the largest file and often dominates I/O and memory usage; consider using databases, Parquet, or Dask for larger experiments.
